@@ -31,7 +31,7 @@ const EditUser = ({ handleOpen, user }) => {
                       username: formData.username,
                       email: formData.email,
                       company: {
-                          ...u.company,
+                          ...item.company,
                           name: formData.companyName,
                           bs: formData.department,
                       },
