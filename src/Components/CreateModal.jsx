@@ -13,7 +13,7 @@ const CreateModal = ({ setMode, mode, handleOpen, open , selectedUser }) => {
     return (
         <div>
             {/* Button to Open Create Mode */}
-            <Button onClick={handleCreate} variant="gradient">
+            <Button onClick={handleCreate} variant="gradient" className="text-md">
                 Create New User
             </Button>
 
