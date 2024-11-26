@@ -1,25 +1,27 @@
-import React, { useState } from 'react';
-import {
-    Button,
-    Dialog,
-    DialogHeader,
-    DialogBody,
-    DialogFooter,
-} from "@material-tailwind/react";
-import CreateUser from './CreateUser';
+import React, { useState } from "react";
+import { Button, Dialog } from "@material-tailwind/react";
+import CreateUser from "./CreateUser";
+import EditUser from "./EditUser";
 
-const CreateModal = () => {
-    const [open, setOpen] = useState(false);
+const CreateModal = ({ setMode, mode, handleOpen, open , selectedUser }) => {
 
-    const handleOpen = () => setOpen(!open);
+    const handleCreate = () => {
+        setMode("create");
+        handleOpen();
+    };
+
     return (
         <div>
-            <Button onClick={handleOpen} variant="gradient" >
+            {/* Button to Open Create Mode */}
+            <Button onClick={handleCreate} variant="gradient">
                 Create New User
             </Button>
+
+
+            {/* Unified Dialog */}
             <Dialog open={open} handler={handleOpen}>
-                {/* Create user Component */}
-                <CreateUser  handleOpen={handleOpen}/>
+                {mode === "create" && <CreateUser handleOpen={handleOpen} />}
+                {mode === "edit" && <EditUser handleOpen={handleOpen} user={selectedUser}/>}
             </Dialog>
         </div>
     );
